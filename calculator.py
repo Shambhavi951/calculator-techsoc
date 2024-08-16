@@ -42,14 +42,14 @@ if(choice==1):
             print("Result=",result)
         ans=input("Do you want to perform another operation(y/n)")
 
-if(choice==2):
+elif(choice==2):
     def factorial(n):
         fact=0.0
-    if(n==0 or n==1):
-        fact=1
-    else:
-        fact=n*factorial(n-1)
-    return fact
+        if(n==0 or n==1):
+            fact=1
+        else:
+            fact=n*factorial(n-1)
+        return fact
     def sin(x):
         result=0.0
         for i in range(1,150,2):
@@ -58,39 +58,55 @@ if(choice==2):
                 result=result + (x**i)/f
             elif(((i-1)/2)%2!=0):
                 result=result - (x**i)/f
-    return result
+        return result
     
-def cos(x):
-    result=0.0
-    for i in range(0,150,2):
-        f=factorial(i)
+    def cos(x):
+        result=0.0
+        for i in range(0,150,2):
+            f=factorial(i)
         if((i/2)%2==0):
             result=result + ((x**i)/f)
         elif((i/2)%2!=0):
             result=result - ((x**i)/f)
-    return result
+        return result
 
     
 
     
 #main
-x=int(input("Enter the angle in radians"))
-op=input("Enter the operation you want to perform (sin/cos/tan/sec/cosec/cot)")
-if (op=="sin"):
-    ans=sin(x)
-    print("Result=",ans)
-elif (op=="cos"):
-    ans=cos(x)
-    print("Result=",ans)
-elif (op=="tan"):
-    ans=sin(x)/cos(x)
-    print("Result=",ans)
-elif (op=="cosec"):
-    ans=1/sin(x)
-    print("Result=",ans)
-elif (op=="sec"):
-    ans=1/cos(x)
-    print("Result=",ans)
-elif (op=="cot"):
-    ans=cos(x)/sin(x)
-    print("Result=",ans)
+    x=int(input("Enter the angle in radians"))
+    op=input("Enter the operation you want to perform (sin/cos/tan/sec/cosec/cot)")
+    if (op=="sin"):
+        ans=sin(x)
+        print("Result=",ans)
+    elif (op=="cos"):
+        ans=cos(x)
+        print("Result=",ans)
+    elif (op=="tan"):
+        ans=sin(x)/cos(x)
+        print("Result=",ans)
+    elif (op=="cosec"):
+        ans=1/sin(x)
+        print("Result=",ans)
+    elif (op=="sec"):
+        ans=1/cos(x)
+        print("Result=",ans)
+    elif (op=="cot"):
+        ans=cos(x)/sin(x)
+        print("Result=",ans)
+
+
+if(choice==3):
+    def power():
+        b=float(input("Enter the base"))
+        e=int(input("Enter the exponent"))
+        result=1
+        if(e<0):
+            for i in range(e):
+                result=result*(1/b)
+        else:
+            for i in range(e):
+                result=result*b
+        print("Result=",result)
+#main
+    power()
