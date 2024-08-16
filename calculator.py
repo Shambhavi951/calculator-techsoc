@@ -43,13 +43,7 @@ if(choice==1):
         ans=input("Do you want to perform another operation(y/n)")
 
 elif(choice==2):
-    def factorial(n):
-        fact=0.0
-        if(n==0 or n==1):
-            fact=1
-        else:
-            fact=n*factorial(n-1)
-        return fact
+    
     def sin(x):
         result=0.0
         for i in range(1,150,2):
@@ -97,42 +91,20 @@ elif(choice==2):
 
 
 elif(choice==3):
-    def power():
-        b=float(input("Enter the base"))
-        e=int(input("Enter the exponent"))
-        x=log(b)
-        result=0.0
-        s=1.0
-        for i in range(0,150):
-            a=factorial(i)
-            for i in range(0,i):
-                s=s*(x*e)
-            result=result+(s/a)
-        print("Result=",result)
             
 #main
-    power()
+    b=float(input("Enter the base"))
+    e=int(input("Enter the exponent"))
+    answer=exponent(b,e)
+    print("Result=",answer)
     
 elif(choice==4):
-    def log():
-        b=float(input("Enter the base of the log"))
-        a=float(input("Enter the value of a in logb (a)"))
-        n=newt(a)
-        d=newt(b)
-        ans=n/d
-        print("Log value=",ans)
-    
-    def newt(n):
-        e=2.718281828459045
-        x=1.0
-        f=(e**x)-n
-        fd=e**x
-        for i in range(1,150):
-            x=x-((f)/(fd))
-            f=(e**x)-n
-            fd=e**x
-        return x
-    log()
+
+#main
+    b=float(input("Enter the base of the log"))
+    a=float(input("Enter the value of a in logb (a)"))
+    answer=log(b,a)
+    print("Log value=",answer)
     
 elif(choice==5):
     ch=int(input("""Enter 1 for linear equation with 1 variable
@@ -207,4 +179,42 @@ if(ch==6):
         D1= (((4*a*c)-(b**2))**0.5) 
         D2= - (((4*a*c)-(b**2))**0.5) 
         print("The answers are =",-b/2,"+",D1/2,"i and",-b/2,"+",D2/2,"i")
+        
+        
+#common functions
+def log(b,a):
+    n=newt(a)
+    d=newt(b)
+    ans=n/d
+    return ans
+    
+def newt(n):
+    e=2.718281828459045
+    x=1.0
+    f=(e**x)-n
+    fd=e**x
+    for i in range(1,150):
+        x=x-((f)/(fd))
+        f=(e**x)-n
+        fd=e**x
+    return x
+
+def exponent(b,e):
+    x=log(b)
+    result=0.0
+    s=1.0
+    for i in range(0,150):
+        a=factorial(i)
+        for i in range(0,i):
+            s=s*(x*e)
+        result=result+(s/a)
+    return result
+
+def factorial(n):
+    fact=0.0
+    if(n==0 or n==1):
+        fact=1
+    else:
+        fact=n*factorial(n-1)
+    return fact
 
