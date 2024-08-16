@@ -96,7 +96,7 @@ elif(choice==2):
         print("Result=",ans)
 
 
-if(choice==3):
+elif(choice==3):
     def power():
         b=float(input("Enter the base"))
         e=int(input("Enter the exponent"))
@@ -110,3 +110,30 @@ if(choice==3):
         print("Result=",result)
 #main
     power()
+    
+elif(choice==4):
+    def log():
+        b=float(input("Enter the base of the log"))
+        a=float(input("Enter the value of a in logb (a)"))
+        n=newt(a)
+        d=newt(b)
+        ans=n/d
+        print("Log value=",ans)
+    
+    def newt(n):
+        e=2.718281828459045
+        x=1.0
+        f=(e**x)-n
+        fd=e**x
+        for i in range(1,150):
+            x=x-((f)/(fd))
+            f=(e**x)-n
+            fd=e**x
+        return x
+    log()
+    
+elif(choice==5):
+    ch=int(input("""Enter 1 for linear equation with 1 variable
+                    Enter 2 for linear equation with 2 variables
+                    Enter 3 for linear equation with 3 variable"""))
+
