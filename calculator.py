@@ -100,14 +100,15 @@ elif(choice==3):
     def power():
         b=float(input("Enter the base"))
         e=int(input("Enter the exponent"))
-        result=1
-        if(e<0):
-            for i in range(e):
-                result=result*(1/b)
-        else:
-            for i in range(e):
-                result=result*b
-        print("Result=",result)
+        x=log(b)
+        result=0.0
+        s=1.0
+        for i in range(0,150):
+            for i in range(0,i):
+                
+                
+            result=result+
+            
 #main
     power()
     
