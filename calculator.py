@@ -104,10 +104,11 @@ elif(choice==3):
         result=0.0
         s=1.0
         for i in range(0,150):
+            a=factorial(i)
             for i in range(0,i):
-                
-                
-            result=result+
+                s=s*(x*e)
+            result=result+(s/a)
+        print("Result=",result)
             
 #main
     power()
