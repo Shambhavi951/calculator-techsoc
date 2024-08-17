@@ -1,6 +1,6 @@
 print("CALCULATOR")
 print("Enter the task which you want to perform")
-choice=int(input("""Enter 1 for arithmetic functions
+choice=int(input("""                    Enter 1 for arithmetic functions
                     Enter 2 for trigonometric functions
                     Enter 3 for exponential function
                     Enter 4 for logarithmic functions
@@ -25,21 +25,24 @@ if(choice==1):
             a=float(input("Enter the first number"))
             b=float(input("Enter the second number"))
             result=add(a,b)
+            print("Result=",result)
         elif(op=="subtraction"):
             a=float(input("Enter the first number"))
             b=float(input("Enter the second number"))
             result=subtract(a,b)
+            print("Result=",result)
         elif(op=="multiplication"):
             a=float(input("Enter the first number"))
             b=float(input("Enter the second number"))
             result=multiply(a,b)
+            print("Result=",result)
         elif(op=="division"):
             a=float(input("Enter the first number"))
             b=float(input("Enter the second number"))
             result=divide(a,b)
+            print("Result=",result)
         else:
             print("No valid option has been entered.Please try again")
-            print("Result=",result)
         ans=input("Do you want to perform another operation(y/n)")
 
 elif(choice==2):
@@ -74,7 +77,8 @@ elif(choice==2):
 
     
 #main
-    x=float(input("Enter the angle in radians"))
+    angle=float(input("Enter the angle in degrees between 0 and 360"))
+    x=angle*0.01745
     op=input("Enter the operation you want to perform (sin/cos/tan/sec/cosec/cot)")
     if (op=="sin"):
         ans=sin(x)
@@ -83,34 +87,66 @@ elif(choice==2):
         ans=cos(x)
         print("Result=",ans)
     elif (op=="tan"):
-        ans=sin(x)/cos(x)
-        print("Result=",ans)
+        if(angle==90):
+            print("tan is not defined at 90")
+        else:
+            ans=sin(x)/cos(x)
+            print("Result=",ans)
     elif (op=="cosec"):
-        ans=1/sin(x)
-        print("Result=",ans)
+        if(angle==0):
+            print("cosec is not defined at 0")
+        else:
+            ans=1/sin(x)
+            print("Result=",ans)
     elif (op=="sec"):
-        ans=1/cos(x)
-        print("Result=",ans)
+        if(angle==90):
+            print("sec is not defined at 90")
+        else:
+            ans=1/cos(x)
+            print("Result=",ans)
     elif (op=="cot"):
-        ans=cos(x)/sin(x)
-        print("Result=",ans)
+        if(angle==0):
+            print("cot is not defined at 0")
+        else:
+            ans=cos(x)/sin(x)
+            print("Result=",ans)
 
 
 elif(choice==3):
+    def expo(a,x):
+        result=1.0
+        for i in range(0,x):
+            result=result*i
             
-#main
-    b=float(input("Enter the base"))
-    e=int(input("Enter the exponent"))
-    answer= exponent(b,e)
-    print("Result=",answer)
+            
+        
     
 elif(choice==4):
-
-#main
+    def log(b,a):
+        n=newt(a)
+        d=newt(b)
+        ans=n/d
+        return ans
+    
+    def newt(n):
+        e=2.718281828459045
+        x=1.0
+        f=(e**x)-n
+        fd=e**x
+        for i in range(1,150):
+            x=x-((f)/(fd))
+            f=(e**x)-n
+            fd=e**x
+        return x
+    
     b=float(input("Enter the base of the log"))
     a=float(input("Enter the value of a in logb (a)"))
-    answer=log(b,a)
-    print("Log value=",answer)
+    if(b<0 or b==1 or a<0):
+        print("Log undefined")
+    else:
+        answer=log(b,a)
+        print("Log value=",answer)
+    
     
 elif(choice==5):
     ch=int(input("""Enter 1 for linear equation with 1 variable
@@ -131,7 +167,7 @@ elif(choice==5):
         a2=float(input("Enter a2"))
         b2=float(input("Enter b2"))
         c2=float(input("Enter c2"))
-        if(a1==a2 and b1==b2 and c1==c2):
+        if(a1/a2 == b1/b2 and b1/b2==c1/c2 and c1/c2==a1/a2):
             print("Your line has infinite solutions")
         else:
             x= ((b2*c1)-(b1*c2))/((b1*a2)-(b2*a1))
@@ -174,7 +210,7 @@ elif(choice==5):
     else:
         print("Wrong input")
         
-if(choice==6):
+elif(choice==6):
     print("For your quadratic equation in the form ax^2+bx+c")
     a=int(input("enter a"))
     b=int(input("enter b"))
@@ -188,36 +224,8 @@ if(choice==6):
         D1= (((4*a*c)-(b**2))**0.5) 
         D2= - (((4*a*c)-(b**2))**0.5) 
         print("The answers are =",-b/2,"+",D1/2,"i and",-b/2,"+",D2/2,"i")
+else:
+    print("Incorrect input,try again")      
         
-        
-#common functions
-def log(b,a):
-    n=newt(a)
-    d=newt(b)
-    ans=n/d
-    return ans
-    
-def newt(n):
-    e=2.718281828459045
-    x=1.0
-    f=(e**x)-n
-    fd=e**x
-    for i in range(1,150):
-        x=x-((f)/(fd))
-        f=(e**x)-n
-        fd=e**x
-    return x
-
-def exponent(b,e):
-    x=log(b)
-    result=0.0
-    s=1.0
-    for i in range(0,150):
-        a=factorial(i)
-        for i in range(0,i):
-            s=s*(x*e)
-        result=result+(s/a)
-    print("result",result)
-    return result
 
 
