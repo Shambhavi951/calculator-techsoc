@@ -43,7 +43,13 @@ if(choice==1):
         ans=input("Do you want to perform another operation(y/n)")
 
 elif(choice==2):
-    
+    def factorial(n):
+        fact=0.0
+        if(n==0 or n==1):
+            fact=1
+        else:
+            fact=n*factorial(n-1)
+        return fact
     def sin(x):
         result=0.0
         for i in range(1,150,2):
@@ -68,7 +74,7 @@ elif(choice==2):
 
     
 #main
-    x=int(input("Enter the angle in radians"))
+    x=float(input("Enter the angle in radians"))
     op=input("Enter the operation you want to perform (sin/cos/tan/sec/cosec/cot)")
     if (op=="sin"):
         ans=sin(x)
@@ -95,7 +101,7 @@ elif(choice==3):
 #main
     b=float(input("Enter the base"))
     e=int(input("Enter the exponent"))
-    answer=exponent(b,e)
+    answer= exponent(b,e)
     print("Result=",answer)
     
 elif(choice==4):
@@ -125,10 +131,13 @@ elif(choice==5):
         a2=float(input("Enter a2"))
         b2=float(input("Enter b2"))
         c2=float(input("Enter c2"))
-        x= ((b2*c1)-(b1*c2))/((b1*a2)-(b2*a1))
-        y= ((a2*c1)-(a1*c2))/((b2*a1)-(b1*a2))
-        print("x=",x)
-        print("y=",y)
+        if(a1==a2 and b1==b2 and c1==c2):
+            print("Your line has infinite solutions")
+        else:
+            x= ((b2*c1)-(b1*c2))/((b1*a2)-(b2*a1))
+            y= ((a2*c1)-(a1*c2))/((b2*a1)-(b1*a2))
+            print("x=",x)
+            print("y=",y)
     elif(ch==3):
         print("For your first linear equation in the form a1x+b1y+c1z=d1")
         a1=float(input("Enter a1"))
@@ -165,7 +174,7 @@ elif(choice==5):
     else:
         print("Wrong input")
         
-if(ch==6):
+if(choice==6):
     print("For your quadratic equation in the form ax^2+bx+c")
     a=int(input("enter a"))
     b=int(input("enter b"))
@@ -208,13 +217,7 @@ def exponent(b,e):
         for i in range(0,i):
             s=s*(x*e)
         result=result+(s/a)
+    print("result",result)
     return result
 
-def factorial(n):
-    fact=0.0
-    if(n==0 or n==1):
-        fact=1
-    else:
-        fact=n*factorial(n-1)
-    return fact
 
