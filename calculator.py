@@ -113,14 +113,48 @@ elif(choice==2):
 
 
 elif(choice==3):
-    def expo(a,x):
-        result=1.0
-        for i in range(0,x):
-            result=result*i
-            
-            
-        
+    def log(b,a):
+        n=newt(a)
+        d=newt(b)
+        ans=n/d
+        return ans
     
+    def newt(n):
+        e=2.718281828459045
+        x=1.0
+        f=(e**x)-n
+        fd=e**x
+        for i in range(1,150):
+            x=x-((f)/(fd))
+            f=(e**x)-n
+            fd=e**x
+        return x
+    
+    def factorial(n):
+        fact=0.0
+        if(n==0 or n==1):
+            fact=1
+        else:
+            fact=n*factorial(n-1)
+        return fact
+
+    def expo(a,x):
+        l=log(2.718281828459045,a)
+        p=x*l
+        result=1.0
+        for i in range(1,150):
+            f=factorial(i)
+            s=1
+            for j in range(0,i):
+                s*=p
+            result=result+(s/f)
+        return result
+        
+    a=float(input("Enter base"))
+    x=float(input("Enter exponent"))
+    sol=expo(a,x)
+    print("Result=",sol)
+  
 elif(choice==4):
     def log(b,a):
         n=newt(a)
@@ -225,7 +259,47 @@ elif(choice==6):
         D2= - (((4*a*c)-(b**2))**0.5) 
         print("The answers are =",-b/2,"+",D1/2,"i and",-b/2,"+",D2/2,"i")
 else:
-    print("Incorrect input,try again")      
+    print("Incorrect input,try again")  
+    
+    
+    
+#common functions    
+def log(b,a):
+    n=newt(a)
+    d=newt(b)
+    ans=n/d
+    return ans
+    
+def newt(n):
+    e=2.718281828459045
+    x=1.0
+    f=(e**x)-n
+    fd=e**x
+    for i in range(1,150):
+        x=x-((f)/(fd))
+        f=(e**x)-n
+        fd=e**x
+    return x
+
+def factorial(n):
+    fact=0.0
+    if(n==0 or n==1):
+        fact=1
+    else:
+        fact=n*factorial(n-1)
+    return fact
+
+def expo(a,x):
+    l=log(2.718281828459045,a)
+    p=x*l
+    result=1.0
+    for i in range(1,150):
+        f=factorial(i)
+        s=1
+        for j in range(0,i):
+            s*=p
+        result+=(s/f)
+    return result   
         
 
 
